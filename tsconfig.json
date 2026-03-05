@@ -4,7 +4,8 @@
     "module": "nodenext",
     "target": "esnext",
     "outDir": "./dist",
-    "types": [],
+    "rootDir": "./src",
+    "types": ["node"],
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -17,5 +18,9 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+    "paths": {
+      "@core/*": ["./src/core/*"],
+      "@providers/*": ["./src/providers/*"]
+    }
   }
 }
