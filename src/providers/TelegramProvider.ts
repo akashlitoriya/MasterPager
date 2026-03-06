@@ -1,4 +1,3 @@
-import type { Alert } from "@core/Alert.ts";
 
 interface TelegramConfig {
     token: string,
@@ -11,8 +10,8 @@ export class TelegramProvider {
         this.config = config;
     }
 
-    async send(alert: Alert) {
-        const message = `*Alert:* ${alert?.message} : \`${alert.timestamp && new Date(alert?.timestamp)?.toISOString()}\``;
+    async send(alert: string) {
+        const message = alert;
         const url = `https://api.telegram.org/bot${this.config.token}/sendMessage`;
         const body = {
             chat_id: this.config.chatId,

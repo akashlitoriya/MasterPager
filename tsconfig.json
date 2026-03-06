@@ -21,7 +21,8 @@
     "skipLibCheck": true,
     "paths": {
       "@core/*": ["./src/core/*"],
-      "@providers/*": ["./src/providers/*"]
+      "@providers/*": ["./src/providers/*"],
+      "@middlewares/*": ["./src/middlewares/*"]
     }
   }
 }

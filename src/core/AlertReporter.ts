@@ -1,5 +1,6 @@
 import type { Provider } from "@core/Provider.ts";
 import type { Alert } from "@core/Alert.ts";
+import { formatAlert } from "@middlewares/formatter.js";
 
 export class AlertReporter {
     private providers: Provider[] = [];
@@ -14,8 +15,9 @@ export class AlertReporter {
 
     async alert(alert: Alert) {
         alert.serviceName = alert?.serviceName || this.appName;
+        const formattedAlert = formatAlert(alert);
         for (const provider of this.providers) {
-            await provider.send(alert);
+            await provider.send(formattedAlert);
         }
     }
 
