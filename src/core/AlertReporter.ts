@@ -3,18 +3,30 @@ import type { Alert } from "@core/Alert.ts";
 
 export class AlertReporter {
     private providers: Provider[] = [];
+    private appName: string = "AlertReporter";
 
-    constructor(providers: Provider[]) {
+    constructor(providers: Provider[], appName?: string) {
         this.providers = providers;
+        if (appName) {
+            this.appName = appName;
+        }
     }
 
-    private async alert(alert: Alert) {
+    async alert(alert: Alert) {
+        alert.serviceName = alert?.serviceName || this.appName;
         for (const provider of this.providers) {
             await provider.send(alert);
         }
     }
 
-    async error(error: Alert) {
-        return this.alert(error);
+    async error(error: Error, metadata?: Record<string, any>) {
+        const alert: Alert = {
+            serviceName: this.appName,
+            message: error?.message || 'Unknown error',
+            timestamp: Date.now(),
+            stackTrace: error?.stack || '',
+            metadata
+        };
+        return this.alert(alert);
     }
 }

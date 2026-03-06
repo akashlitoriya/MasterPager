@@ -12,7 +12,7 @@ export class TelegramProvider {
     }
 
     async send(alert: Alert) {
-        const message = `*Alert:* ${alert.message} : \`${new Date(alert.timestamp).toISOString()}\``;
+        const message = `*Alert:* ${alert?.message} : \`${alert.timestamp && new Date(alert?.timestamp)?.toISOString()}\``;
         const url = `https://api.telegram.org/bot${this.config.token}/sendMessage`;
         const body = {
             chat_id: this.config.chatId,
