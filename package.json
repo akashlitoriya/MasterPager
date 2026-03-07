@@ -1,7 +1,7 @@
 {
   "name": "masterpager",
   "version": "1.0.0",
-  "description": "",
+  "description": "An easy-to-use alerting library for getting alerts on various platforms like telegram etc.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,7 +18,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/akashlitoriya/MasterPager/issues"
   },

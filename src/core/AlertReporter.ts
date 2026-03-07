@@ -1,6 +1,6 @@
-import type { Provider } from "@core/Provider.ts";
-import type { Alert } from "@core/Alert.ts";
-import { formatAlert } from "@middlewares/formatter.js";
+import type { Provider } from "@core/Provider";
+import type { Alert } from "@core/Alert";
+import { formatAlert } from "@middlewares/formatter";
 
 export class AlertReporter {
     private providers: Provider[] = [];
